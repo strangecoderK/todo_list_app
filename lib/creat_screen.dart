@@ -22,7 +22,10 @@ class _CreateScreenState extends State<CreateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('write what to do',style: TextStyle(color: Colors.white),),
+        title: Text(
+          'write what to do',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.brown,
         actions: [
           IconButton(
@@ -34,7 +37,10 @@ class _CreateScreenState extends State<CreateScreen> {
                 Navigator.pop(context);
               }
             },
-            icon: Icon(Icons.done,color: Colors.white,),
+            icon: Icon(
+              Icons.done,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:intl/date_symbol_data_file.dart';
 import 'package:todo_list/todo.dart';
 
 import 'main_page.dart';
 
 late Box<Todo> todos;
 
-void main() async{ //퓨처함수. 생략
+void main() async {
+  //퓨처함수. 생략
   await Hive.initFlutter();
   Hive.registerAdapter(TodoAdapter());
   todos = await Hive.openBox<Todo>('todolist.db');
   //todos라는 객체를 통해 db에 접근 가능.
 
-  
-  
   runApp(const MyApp());
 }
 
