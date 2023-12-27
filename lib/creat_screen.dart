@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_list/main.dart';
 import 'package:todo_list/todo.dart';
 
@@ -18,6 +19,22 @@ class _CreateScreenState extends State<CreateScreen> {
     super.dispose();
   }
 
+  DateTime dateTimeCalender = DateTime.now();
+
+  void _showDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2200),
+    ).then((value) {
+      setState(() {
+        dateTimeCalender = value!;
+        print('Here dateTimeCalendar $dateTimeCalender');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +49,7 @@ class _CreateScreenState extends State<CreateScreen> {
             onPressed: () async {
               await todos.add(Todo(
                   title: _textController.text,
-                  dateTime: DateTime.now().millisecondsSinceEpoch));
+                  dateTime: dateTimeCalender.millisecondsSinceEpoch));
               if (mounted) {
                 Navigator.pop(context);
               }
@@ -46,16 +63,35 @@ class _CreateScreenState extends State<CreateScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          controller: _textController,
-          decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              hintText: '할일을 입력하세요',
-              hintStyle: TextStyle(color: Colors.grey),
-              filled: true,
-              fillColor: Colors.pink[50]),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                TextButton(
+                  onPressed: _showDatePicker,
+                  child: Text(
+                    'choose date :',
+                    style: TextStyle(color: Colors.brown),
+                  ),
+                ),
+                Text(
+                  '${DateFormat('yyyy-MM-dd').format(dateTimeCalender)}',
+                  style: TextStyle(fontSize: 18),
+                )
+              ],
+            ),
+            TextField(
+              controller: _textController,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  hintText: '할일을 입력하세요',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  filled: true,
+                  fillColor: Colors.pink[50]),
+            ),
+          ],
         ),
       ),
     );

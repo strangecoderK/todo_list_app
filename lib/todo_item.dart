@@ -8,12 +8,11 @@ class TodoItem extends StatelessWidget {
   final Function(Todo) onTap;
   final Function(Todo) onDelete;
 
-  const TodoItem({
-    super.key,
-    required this.todo,
-    required this.onTap,
-    required this.onDelete
-  });
+  const TodoItem(
+      {super.key,
+      required this.todo,
+      required this.onTap,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
