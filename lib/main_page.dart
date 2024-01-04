@@ -16,6 +16,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'What to do!',
@@ -26,7 +27,9 @@ class _MainPageState extends State<MainPage> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          Image.asset('asset/elephant.png'),
+          Image.asset(
+            'asset/elephant.png',
+          ),
           ListView(
             children: todos.values
                 .map(
@@ -62,6 +65,7 @@ class _MainPageState extends State<MainPage> {
             context,
             MaterialPageRoute(builder: (context) => CreateScreen()),
           );
+
           setState(() {});
         },
         child: Icon(Icons.add),

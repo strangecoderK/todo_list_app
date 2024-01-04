@@ -50,6 +50,7 @@ class _CreateScreenState extends State<CreateScreen> {
               await todos.add(Todo(
                   title: _textController.text,
                   dateTime: dateTimeCalender.millisecondsSinceEpoch));
+
               if (mounted) {
                 Navigator.pop(context);
               }
