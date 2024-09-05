@@ -30,7 +30,6 @@ class _CreateScreenState extends State<CreateScreen> {
     ).then((value) {
       setState(() {
         dateTimeCalender = value!;
-        print('Here dateTimeCalendar $dateTimeCalender');
       });
     });
   }
@@ -39,7 +38,7 @@ class _CreateScreenState extends State<CreateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'write what to do',
           style: TextStyle(color: Colors.white),
         ),
@@ -55,7 +54,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 Navigator.pop(context);
               }
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.done,
               color: Colors.white,
             ),
@@ -69,17 +68,24 @@ class _CreateScreenState extends State<CreateScreen> {
             Row(
               children: [
                 TextButton(
+                  style: TextButton.styleFrom(backgroundColor: Colors.pink[50]),
                   onPressed: _showDatePicker,
-                  child: Text(
+                  child: const Text(
                     'choose date :',
                     style: TextStyle(color: Colors.brown),
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
                 Text(
-                  '${DateFormat('yyyy-MM-dd').format(dateTimeCalender)}',
-                  style: TextStyle(fontSize: 18),
+                  DateFormat('yyyy-MM-dd').format(dateTimeCalender),
+                  style: const TextStyle(fontSize: 18),
                 )
               ],
+            ),
+            SizedBox(
+              height: 20,
             ),
             TextField(
               controller: _textController,
@@ -88,7 +94,7 @@ class _CreateScreenState extends State<CreateScreen> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   hintText: '할일을 입력하세요',
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Colors.grey),
                   filled: true,
                   fillColor: Colors.pink[50]),
             ),

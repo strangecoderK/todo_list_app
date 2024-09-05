@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:todo_list/creat_screen.dart';
 import 'package:todo_list/todo_item.dart';
-
 import 'main.dart';
 
 class MainPage extends StatefulWidget {
@@ -18,7 +16,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'What to do!',
           style: TextStyle(color: Colors.white),
         ),
@@ -34,8 +32,8 @@ class _MainPageState extends State<MainPage> {
             children: todos.values
                 .map(
                   (e) => Container(
-                    margin: EdgeInsets.all(7.0),
-                    padding: EdgeInsets.all(5.0),
+                    margin: const EdgeInsets.all(7.0),
+                    padding: const EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
                       color: Colors.pink[50],
                       border: Border.all(color: Colors.brown),
@@ -63,12 +61,12 @@ class _MainPageState extends State<MainPage> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateScreen()),
+            MaterialPageRoute(builder: (context) => const CreateScreen()),
           );
 
           setState(() {});
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
